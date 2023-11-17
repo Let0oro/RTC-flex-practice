@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: black;
+  background-color: #ebebeb;
+  display: flex;
+  flex-direction: column;
+  min-height: 100lvh;
+  padding-left: 4rem;
+}
+
+nav {
+  width: 4rem;
+  left: 0;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: solid 1px #ccc;
+  background-color: #ebebeb;
+  min-height: 100lvh;
+  border-right: 1px solid #ccc;
+}
+
+nav .input {
+  display: none;
+}
+
+nav .menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+nav a {
+  position: relative;
+  display: inline-block;
+  max-width: 3rem;
+  aspect-ratio: 1;
+  min-height: min-content;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  border: solid 1px #aaa;
+  text-align: center;
+  text-decoration: none;
+  color: #555;
+  transition: background-color 0.2s;
+}
+
+nav .menu a:hover {
+  background-color: #d4d4d4;
+}
+
+nav .menu a[nametit]::after {
+  content: attr(nametit);
+  left: 2.7rem;
+  position: absolute;
+  top: 0.45rem;
+  background-color: #0000;
+  color: #aaa0;
+  width: max-content;
+  padding: 0.3rem;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  transform: translateX(0rem);
+  transition: transform 0.25s 0.1s, background-color 0.2s, color 0.2s;
+}
+
+nav .menu a[nametit]:hover::after {
+  background-color: #000;
+  color: #aaa;
+  transform: translateX(0.5rem);
+}
+
+nav a[aria-current='page'] {
+  color: #000;
+  background-color: white;
+  border: white;
+  box-shadow: -1.5px 3px 7px #aaa;
+}
+
+main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 10lvw 0 10lvw;
+}
+
+main h1 {
+  position: relative;
+  text-align: center;
+  font-weight: normal;
+  font-family: 'Abril Fatface', serif;
+  font-size: 2rem;
+}
+
+main h1::before{
+  position: absolute;
+  content: 'Thursday, 16 November 2023';
+  font-size: .9rem;
+  font-style: italic;
+  left: 0;
+  bottom: 100%;
+}
+
+.main-daily {
+  justify-content: center;
+  position: relative;
+  font-family: serif;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.main-daily img {
+  width: 100%;
+  border-radius: 10px;  
+}
+
+.main-daily__card {
+  position: relative;
+  width: 18rem;
+  max-width: 100%;
+  padding: .8rem;
+}
+
+.main-daily__card h3 {
+  font-size: 1.3rem;
+  margin: .5rem 0;
+}
+
+.card-content {
+  padding: .7rem;
+  background-color: #dcdcdc;
+  border-radius: 10px;  
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.card-content p {
+  padding: 0;
+  margin: .8rem 0 .4rem 0;
+}
+
+.card-content__img {
+  width: 100%;
+  max-height: 100%;
+  aspect-ratio: 4/3;
+}
+
+footer {
+  padding: 0 5lvw;
+  text-align: center;
+}
+
+footer a {
+  color: #000
+}
+
+footer ul {
+  justify-content: center;
+  display: flex;
+  list-style: none;
+  gap: .5rem;
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    padding: 0;
+  }
+
+  nav {
+    position: relative;
+    width: 100lvw;
+    min-height: 5lvh;
+    overflow: visible;
+    flex-direction: row;
+  }
+
+  nav .profile {
+    order: 1;
+  }
+
+  nav .menu {
+    flex-direction: row;
+  }
+
+  nav .input {
+    position: relative;
+    display: inline-block;
+    width: min-content;
+    aspect-ratio: 1;
+    order: 3;
+  }
+
+  nav .input a {
+    pointer-events: none;
+    background-color: #ebebeb;
+  }
+
+  nav .input input {
+    position: absolute;
+    left: 0;
+    transform: translate(-1.5px, -1.5px);
+    height: 90%;
+    width: 90%;
+  }
+
+  nav .menu {
+    display: none;
+    transition: all 0.4s;
+  }
+
+  nav .input:has(input:checked) ~ .menu {
+    position: absolute;
+    right: 0;
+    top: 4rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #ebebeb;
+    border-radius: 5px;
+    border: 1px solid #d4d4d4;
+    height: auto;
+    width: auto;
+    align-items: flex-end;
+    padding: 2rem 2rem 2rem 5rem;
+  }
+
+  nav .input input:checked + a {
+    background-color: #aaa;
+  }
+
+  nav .menu a {
+    min-height: min-content;
+  }
+  nav .menu a[nametit]::after {
+    left: 0;
+    transform: translateX(-3rem);
+    color: #aaa;
+  }
+}
